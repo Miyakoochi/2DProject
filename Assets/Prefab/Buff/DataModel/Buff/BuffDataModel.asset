@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a39495bb8e844bef8e7a0f1b5bb62ae4, type: 3}
+  m_Name: BuffDataModel
+  m_EditorClassIdentifier: 
+  Id: Buff_Test
+  Name: 
+  Tags:
+  - Tag: Test.Buff1
+  Priority: 0
+  MaxStack: 0
+  TickTime: 0
+  PropAddMod:
+    MaxHp:
+      BaseValue: 50
+      AddonValue: 0
+      AddonPercentValue: 0
+    Attack:
+      BaseValue: 0
+      AddonValue: 0
+      AddonPercentValue: 0
+    ConstantSpeed:
+      BaseValue: 0
+      AddonValue: 0
+      AddonPercentValue: 0
+  PropTimesMod:
+    MaxHp:
+      BaseValue: 0
+      AddonValue: 0
+      AddonPercentValue: 0
+    Attack:
+      BaseValue: 0
+      AddonValue: 0
+      AddonPercentValue: 0
+    ConstantSpeed:
+      BaseValue: 0
+      AddonValue: 0
+      AddonPercentValue: 0
+  StateMod:
+    IsDead: 0
+    ImmuneTime: 0
+    Side: 0
+    IsCharging: 0

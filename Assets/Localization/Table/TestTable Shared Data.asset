@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: TestTable Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: TestTable
+  m_TableCollectionNameGuidString: 14d1216d12b0c784fa7fe8c0ebea3b76
+  m_Entries:
+  - m_Id: 1379211587584
+    m_Key: UI_StartGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1445250904064
+    m_Key: UI_CreateRoom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1512481402880
+    m_Key: UI_Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10731595149312
+    m_Key: Tips_FunctionError
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39418973564928
+    m_Key: UI_Loading
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118598125924352
+    m_Key: UI_Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118672180555776
+    m_Key: UI_Confirm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118880880734208
+    m_Key: UI_CurrenServer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119210121015296
+    m_Key: UI_Connect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119372914536448
+    m_Key: UI_Port
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119458226679808
+    m_Key: UI_IpAddress
+    m_Metadata:
+      m_Items: []
+  - m_Id: 120358085242880
+    m_Key: UI_Multiplayer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121338231173120
+    m_Key: UI_DirectConnect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 359393886121984
+    m_Key: UI_Demo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 376884402237440
+    m_Key: UI_Wating
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389646511681536
+    m_Key: Tip_IpError
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389737767153664
+    m_Key: Tip_PortError
+    m_Metadata:
+      m_Items: []
+  - m_Id: 740185250377728
+    m_Key: UI_ChooseMap
+    m_Metadata:
+      m_Items: []
+  - m_Id: 741287039512576
+    m_Key: UI_Map1
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 2024370712204017688
+  references:
+    version: 2
+    RefIds:
+    - rid: 2024370712204017688
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1747805089954

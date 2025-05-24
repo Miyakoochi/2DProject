@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Bullet
+  - Unit
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Model
+  - Water
+  - UI
+  - Unit
+  - Apply
+  - Player
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 375041179
+    locked: 0
+  - name: Ground2
+    uniqueID: 755391783
+    locked: 0
+  - name: Shdower
+    uniqueID: 3080961823
+    locked: 0
+  - name: Unit
+    uniqueID: 2090838865
+    locked: 0
+  - name: Apply
+    uniqueID: 1749438499
+    locked: 0
+  - name: Player
+    uniqueID: 745868015
+    locked: 0
+  - name: UI
+    uniqueID: 1798462575
+    locked: 0
+  - name: UIUI
+    uniqueID: 1720122011
+    locked: 0

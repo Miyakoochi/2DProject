@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: RemoteGroup
+  m_EditorClassIdentifier: 
+  m_GroupName: RemoteGroup
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 0af26a750ae79eb4494e822ee9e9187a
+  m_SerializeEntries:
+  - m_GUID: 262a37d3e52bf0745a012f2f8f64591d
+    m_Address: Assets/Prefab/Map/DataModel/LevelDataModel_1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LevelDataModel
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 65f29dffd5527504ca266d3b5f86b64f
+    m_Address: Assets/Prefab/Player/DataModel/PlayerData_01.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PlayerDataModel
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: aed3fe24df8979644833add1f500ef6b
+    m_Address: Assets/Prefab/Map/DataModel/LevelDataModel_2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LevelDataModel
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e56262d486a7fda42be68772b36bcff0
+    m_Address: Assets/Prefab/Enemy/EnemyUnit/EnemyDataModel.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EnemyDataModel
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f3f4724021a7efc4a82a8e56bd86820f
+    m_Address: Assets/Prefab/Player/DataModel/Player1DataModel.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PlayerDataModel
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: df113f1893ac4ce4cbfd22dd54981e00, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 70219e461ada39c4c9a7c800cc4a490f, type: 2}
+    - {fileID: 11400000, guid: b51ec192f344e884ca1fc01bc4d38559, type: 2}
