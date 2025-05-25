@@ -60,9 +60,15 @@ namespace Enemy.EnemyUnit
             {
                 return;
             }
-            
-            foreach (var node in list)
+
+            for (int i = 0; i < list.Count; i++)
             {
+                if (i == 0)
+                {
+                    continue;
+                }
+
+                var node = list[i];
                 if (node.IsWalkable == false)
                 {
                     continue;
@@ -74,7 +80,6 @@ namespace Enemy.EnemyUnit
                 return;
                 //var value = (Target.position - transform.position).normalized;
             }
-
         }
 
         private void OnTriggerEnter2D(Collider2D other)

@@ -30,8 +30,6 @@ namespace Player.PlayerManager
             {
                 playerUnit?.UpdateVelocity();
             }
-            if (mPlayerModel.CurrentControlPlayer != null)
-                Debug.Log(mPlayerModel.CurrentControlPlayer.PlayerBuff.RemainResource.Hp);
         }
     }
 }

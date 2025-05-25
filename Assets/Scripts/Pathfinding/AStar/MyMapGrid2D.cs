@@ -87,20 +87,37 @@ namespace Pathfinding.AStar
 
         public Node NodeFromWorldPoint(Vector3 worldPosition)
         {
+            //var rightUpXInt = Mathf.RoundToInt(RightUpPoint.position.x);
+            var rightUpXInt = RightUpPoint.position.x;
+            //var rightUpYInt = Mathf.RoundToInt(RightUpPoint.position.y);
+            var rightUpYInt = RightUpPoint.position.y;
+            
             if (worldPosition.x < LeftDownPoint.position.x
-                || worldPosition.x > RightUpPoint.position.x
+                || worldPosition.x > rightUpXInt
                 || worldPosition.y < LeftDownPoint.position.y
-                || worldPosition.y > RightUpPoint.position.y)
+                || worldPosition.y > rightUpYInt)
             {
                 return null;
             }
                 
-            var percentX = (worldPosition.x - LeftDownPoint.position.x) / (RightUpPoint.position.x - LeftDownPoint.position.x);
-            var percentY = (worldPosition.y - LeftDownPoint.position.y) / (RightUpPoint.position.y - LeftDownPoint.position.y);
+            var percentX = (worldPosition.x - LeftDownPoint.position.x) / (rightUpXInt - LeftDownPoint.position.x);
+            var percentY = (worldPosition.y - LeftDownPoint.position.y) / (rightUpYInt - LeftDownPoint.position.y);
 
             var x = Mathf.Clamp(Mathf.RoundToInt(GridXSize * percentX), 0, GridXSize - 1);
             var y = Mathf.Clamp(Mathf.RoundToInt(GridYSize * percentY), 0, GridYSize - 1);
             return mMyGrid[x, y];
+        }
+
+        public bool NodeFromIndex(int x, int y, out Node node)
+        {
+            if (x < 0 || y < 0 || x >= GridXSize || y >= GridYSize)
+            {
+                node = null;
+                return false;
+            }
+
+            node = mMyGrid[x, y];
+            return true;
         }
     }
 }

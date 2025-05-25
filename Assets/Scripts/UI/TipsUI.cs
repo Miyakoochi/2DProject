@@ -27,7 +27,7 @@ namespace UI
         
         private void Awake()
         {
-            this.RegisterEvent<ShowTipsEvent>(OnTipsShow);
+            this.RegisterEvent<ShowTipsEvent>(OnTipsShow).UnRegisterWhenDisabled(this);
             targetRect = GetComponent<RectTransform>();
             mUISystem = this.GetSystem<IUISystem>();
         }

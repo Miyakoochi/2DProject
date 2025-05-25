@@ -206,9 +206,10 @@ namespace NetWorkSystem.Kcp
                 var pingMsg = JsonUtility.FromJson<PingMsg>(json);
                 var now = mRttTimeWatch.ElapsedMilliseconds;
                 mCurrentRtt = now - pingMsg.PingTime;
+                Debug.Log($"Ping: {mCurrentRtt} ms");
             }
             //mCurrentRtt = mRttTimeWatch.ElapsedMilliseconds - mLastPingTime;
-            //Debug.Log($"Ping: {mCurrentRtt} ms");
+            //
         }
 
         public IArchitecture GetArchitecture()

@@ -164,9 +164,12 @@ namespace Player.Player
             }
             await UniTask.WaitForSeconds(0.5f);
             IsAttack = false;
-            var localScale = Owner.transform.localScale;
-            localScale.x = OriginalScaleX;
-            Owner.transform.localScale = localScale;
+            if (Owner)
+            {
+                var localScale = Owner.transform.localScale;
+                localScale.x = OriginalScaleX;
+                Owner.transform.localScale = localScale;
+            }
         }
 
         public void OnUnitStop()

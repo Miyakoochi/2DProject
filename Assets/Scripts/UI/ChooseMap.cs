@@ -24,6 +24,7 @@ namespace UI
             this.GetSystem<IAudioSystem>().PlayAudioOnce(EMusicType.Click);
             this.GetSystem<ISceneSystem>().LoadGameScene(1002, 0);
             this.GetSystem<IUISystem>().SetAllUIHide();
+            this.GetSystem<IUISystem>().FadeIn();
         }
     }
 }

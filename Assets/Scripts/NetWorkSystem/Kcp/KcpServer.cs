@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text.RegularExpressions;
@@ -11,6 +12,7 @@ using Random = System.Random;
 
 namespace NetWorkSystem.Kcp
 {
+    
     
     /// <summary>
     /// 首先使用UDP进行连接第一次握手，
@@ -58,6 +60,9 @@ namespace NetWorkSystem.Kcp
             {
                 kcpCallback.Value.Close();
             }
+
+            mKcpSession.Clear();
+            mKcpSessionIpMap.Clear();
         }
         
         private async void RunUpgradeReceive()
@@ -261,14 +266,13 @@ namespace NetWorkSystem.Kcp
             {
                 try
                 {
-                    foreach (var callback in mKcpSessionIpMap.Values)
+                    var kcps = mKcpSessionIpMap.Values.ToList();
+                    foreach (var callback in kcps)
                     {
-                        var result = await callback.ReceiveKcpAsync();
-                        var json = System.Text.Encoding.UTF8.GetString(result);
-                        HandleKcpMsg(json);
+                        HandleKcpReceive(callback);
                     }
 
-                    await UniTask.Delay(10);
+                    await UniTask.Yield();
                 }
                 catch (ObjectDisposedException)
                 {
@@ -284,6 +288,13 @@ namespace NetWorkSystem.Kcp
                 }
 
             }
+        }
+
+        private async void HandleKcpReceive(KcpCallback kcpCallback)
+        {
+            var result = await kcpCallback.ReceiveKcpAsync();
+            var json = System.Text.Encoding.UTF8.GetString(result);
+            HandleKcpMsg(json);
         }
         
         /// <summary>
@@ -363,7 +374,7 @@ namespace NetWorkSystem.Kcp
                         {
                             continue;
                         }
-                        var playerMoveSpeedMsg = JsonUtility.FromJson<PingMsg>(json);
+                        var playerMoveSpeedMsg = JsonUtility.FromJson<PlayerMoveSpeedMsg>(json);
                         var playerMoveSpeedData = System.Text.Encoding.UTF8.GetBytes(JsonUtility.ToJson(playerMoveSpeedMsg));
                         kvp.Value.SendKcpAsync(playerMoveSpeedData, playerMoveSpeedData.Length);
                     }

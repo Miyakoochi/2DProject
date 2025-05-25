@@ -19,6 +19,9 @@ namespace Player.PlayerManager
         public void ClearAllCache();
         public PlayerUnit CreateSelfPlayerById(int playerUnitId);
         public PlayerUnit CreatePlayerById(int playerUnitId);
+
+        public void StartSyncVelocity();
+        public void EndSyncVelocity();
     }
     
     public class PlayerSystem : AbstractSystem, IPlayerSystem
@@ -117,32 +120,51 @@ namespace Player.PlayerManager
         {
             if (ReferenceEquals(obj.AttackUnit, mPlayerModel.CurrentControlPlayer.PlayerBuff))
             {
-                
+                this.GetModel<IPlayerModel>().KillCount.Value += 1;
             }
         }
         
-        private async void StartSyncVelocity()
+        private async void SyncVelocity()
         {
             while (mSyncing)
             {
                 await UniTask.Delay(10);
                 
-                if(mPlayerModel.CurrentControlPlayer == null) return;
+                if(mPlayerModel.CurrentControlPlayer == null) continue;
                 
                 var client = this.GetModel<INetWorkModel>().LocalKcpClient;
                 if (client != null)
                 {
+                    var speed = mPlayerModel.CurrentControlPlayer.Rigidbody.velocity;
                     var playerSpeedJson = JsonUtility.ToJson(new PlayerMoveSpeedMsg()
                     {
                         Conv = client.SelfConv,
                         MsgType = MsgType.PlayerMoveSpeed,
-                        MoveVelocity = mPlayerModel.CurrentControlPlayer.Rigidbody.velocity
+                        MoveVelocity = speed
                     });
-                    client.Send(playerSpeedJson);
+                    client?.Send(playerSpeedJson);
                 }
             }
         }
 
+        public void StartSyncVelocity()
+        {
+            mSyncing = true;
+            SyncVelocity();
+        }
+
+        public void EndSyncVelocity()
+        {
+            mSyncing = false;
+        }
+        
         private bool mSyncing = false;
+
+        protected override void OnDeinit()
+        {
+            base.OnDeinit();
+            
+            this.UnRegisterEvent<UnitKillEvent>(OnKillUnit);
+        }
     }
 }

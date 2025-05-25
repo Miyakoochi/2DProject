@@ -23,6 +23,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - UIDataModel
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4c66f80511045ce4a86c14785df12f9f
+    m_Address: Assets/Prefab/UI/UIDataModel/GameStartMenu.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UIDataModel
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6288c405f845025498fcdebe8fe5492c
     m_Address: Assets/Prefab/UI/UIDataModel/ChooseNetWorkMode.asset
     m_ReadOnly: 0
@@ -47,8 +53,20 @@ MonoBehaviour:
     m_SerializedLabels:
     - UIDataModel
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: aa171e5a1ef8ee74ba1ce51fca6bf568
+    m_Address: Assets/Prefab/UI/UIDataModel/StopGame.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UIDataModel
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b2287ceb7f24bba4ebd178fb17bacd06
     m_Address: Assets/Prefab/UI/UIDataModel/TipsModel.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UIDataModel
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b7bd13133af9fab4598ec0e2bbd3d14b
+    m_Address: Assets/Prefab/UI/UIDataModel/GameEndMenu.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - UIDataModel

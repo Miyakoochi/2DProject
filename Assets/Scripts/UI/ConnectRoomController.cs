@@ -1,4 +1,5 @@
 ﻿using System;
+using Command;
 using Core.QFrameWork;
 using NetWorkSystem;
 using QFramework;
@@ -55,8 +56,8 @@ namespace UI
             
             mUISystem.SetUIShow(UIType.Wating, true);
             mUISystem.SetUIShow(UIType.ConnectRoom, false);
-            
-            //mNetWorkSystem.ConnectRoom(IpAddress.text, int.Parse(Port.text));
+
+            this.SendCommand(new ConnectRoomCommand(IpAddress.text, int.Parse(Port.text)));
         }
 
         private void OnDeleteClick()

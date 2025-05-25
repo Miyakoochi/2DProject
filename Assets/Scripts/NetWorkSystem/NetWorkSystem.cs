@@ -121,10 +121,9 @@ namespace NetWorkSystem
             {
                 Debug.LogError("http" + e);
                 //UIController.Instance.HidePage(UIPageType.LoadingUI);
-                if (e is UnityWebRequestException)
+                if (e is UnityWebRequestException exception)
                 {
-                    UnityWebRequestException ex = e as UnityWebRequestException;
-                    return new HttpResult(null, ex.ResponseCode);
+                    return new HttpResult(null, exception.ResponseCode);
                 }
 
                 return new HttpResult(null, -1);
@@ -143,7 +142,7 @@ namespace NetWorkSystem
             mNetWorkModel.LocalKcpClient.ConnectAsync(ip, port);
             mUpgradeCount = 10;
         }
-
+        
         public void CloseNetWork()
         {
             if (mNetWorkModel.LocalKcpClient != null)

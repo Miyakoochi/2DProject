@@ -19,7 +19,7 @@ namespace Player.PlayerManager
     {
         public PlayerUnit CurrentControlPlayer { get; set; }
         public List<PlayerUnit> OtherPlayer { get; set; } = new();
-        public BindableProperty<int> KillCount { get; set; }
+        public BindableProperty<int> KillCount { get; set; } = new();
         public bool DoCreateNetWorkPlayer { get; set; }
 
         protected override void OnInit()

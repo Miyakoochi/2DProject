@@ -1,4 +1,5 @@
 ﻿using System;
+using Command;
 using Common;
 using Core.QFrameWork;
 using LevelSystem;
@@ -19,6 +20,8 @@ namespace NetWorkSystem
         
         private void Awake()
         {
+            DontDestroyOnLoad(gameObject);
+            
             mNetWorkModel = this.GetModel<INetWorkModel>();
             mStateMachineController = GetComponent<StateMachineController>();
             //this.RegisterEvent<InitNetWorkEvent>(OnInitNetWork).UnRegisterWhenDisabled(this);
@@ -39,6 +42,13 @@ namespace NetWorkSystem
             {
                 base.OnEnterState();
                 this.RegisterEvent<CreateRoomEvent>(OnRoomCreate);
+                this.RegisterEvent<ConnectRoomEvent>(OnRoomConnect);
+            }
+
+            private void OnRoomConnect(ConnectRoomEvent obj)
+            {
+                //创建房间默认本地服务器
+                this.GetSystem<INetWorkSystem>().CreateUdpClient(obj.ip, obj.port);
             }
 
             private void OnRoomCreate(CreateRoomEvent obj)
@@ -47,6 +57,14 @@ namespace NetWorkSystem
                 //创建房间默认本地服务器
                 this.GetSystem<INetWorkSystem>().CreateUdpClient(NetWorkUtil.ServerDefaultIpAddress, obj.port);
                 //this.GetSystem<INetWorkSystem>().UpgradeUdpToKcp();
+            }
+
+            protected override void OnExitState()
+            {
+                base.OnExitState();
+                
+                this.UnRegisterEvent<CreateRoomEvent>(OnRoomCreate);
+                this.UnRegisterEvent<ConnectRoomEvent>(OnRoomConnect);
             }
         }
         
@@ -88,16 +106,19 @@ namespace NetWorkSystem
             switch (baseMsg.MsgType)
             {
                 case MsgType.StartGameSuccess:
-                    this.GetModel<IPlayerModel>().DoCreateNetWorkPlayer = true;
-                    this.GetSystem<ISceneSystem>().LoadGameScene(1001, 0);
-                    this.GetSystem<IUISystem>().SetAllUIHide();
+                    this.SendCommand(new StartGameSuccessCommand());
                     break;
                 case MsgType.PlayerMoveSpeed:
                     var playerMoveSpeedJson = JsonUtility.FromJson<PlayerMoveSpeedMsg>(jsonData);
+                    var speed = playerMoveSpeedJson.MoveVelocity;
+                    if (speed.Equals(Vector2.zero) == false)
+                    {
+                        Debug.Log($"MoveVelocity : {speed}");
+                    }
                     //多玩家要ID的，这里直接赋值给另外的
                     foreach (var playerUnit in this.GetModel<IPlayerModel>().OtherPlayer)
                     {
-                        playerUnit.Direction = playerMoveSpeedJson.MoveVelocity;
+                        playerUnit.Rigidbody.velocity = playerMoveSpeedJson.MoveVelocity;
                     }
                     break;
             }

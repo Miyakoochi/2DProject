@@ -55,11 +55,19 @@ namespace DataModelManager
         private void ClearAllCache()
         {
             mEnemyDataModels.Clear();
-            mHandles.Release();
+
+            if (mHandles.IsValid())
+            {
+                mHandles.Release();
+            }
+
             
             foreach (var handle in mSingleHandles)
             {
-                handle.Release();
+                if (handle.IsValid())
+                {
+                    handle.Release();
+                }
             }
         }
         

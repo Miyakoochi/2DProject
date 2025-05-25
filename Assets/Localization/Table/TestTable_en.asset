@@ -94,6 +94,18 @@ MonoBehaviour:
     m_Localized: Map1
     m_Metadata:
       m_Items: []
+  - m_Id: 1490098582106112
+    m_Localized: ReturnGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1490174188630016
+    m_Localized: MainMenu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1491193349976064
+    m_Localized: GameEnd
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -20,8 +20,7 @@ MonoBehaviour:
   - m_GUID: 14d1216d12b0c784fa7fe8c0ebea3b76
     m_Address: Assets/Localization/Table/TestTable Shared Data.asset
     m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: df113f1893ac4ce4cbfd22dd54981e00, type: 2}

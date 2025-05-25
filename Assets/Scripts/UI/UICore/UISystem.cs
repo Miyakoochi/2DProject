@@ -52,6 +52,9 @@ namespace UI.UICore
         /// <param name="type"></param>
         /// <param name="isActivity"></param>
         public void SetUIActivity(UIType type, bool isActivity);
+
+        public void FadeOut();
+        public void FadeIn();
     }
     
     public class UISystem : AbstractSystem, IUISystem
@@ -139,7 +142,17 @@ namespace UI.UICore
                 uiObject.SetActivity(isActivity);
             }
         }
-        
+
+        public void FadeOut()
+        {
+            this.SendEvent<TransitionEndEvent>();
+        }
+
+        public void FadeIn()
+        {
+            this.SendEvent<TransitionStartEvent>();
+        }
+
         public void SetAllUIHide()
         {
             foreach (var kvp in mUIObjects)

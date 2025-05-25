@@ -47,7 +47,7 @@ namespace SceneSystem
                 player.Status != AsyncOperationStatus.Succeeded) return;
             
             //加载场景
-            var sceneAsync = SceneManager.LoadSceneAsync(SceneUtil.GameScene);
+            var sceneAsync = SceneManager.LoadSceneAsync(SceneUtil.GameScene, LoadSceneMode.Single);
             if (sceneAsync != null)
             {
                 await sceneAsync;
@@ -61,9 +61,28 @@ namespace SceneSystem
             }
         }
 
-        public void ReturnMainMenu()
+        public async void ReturnMainMenu()
         {
+            mLevelSystem.ClearLevelMap();
             
+            if (SceneManager.GetActiveScene().name == SceneUtil.MainMenuScene)
+            {
+                return;
+            }
+
+            //加载场景
+            var sceneAsync = SceneManager.LoadSceneAsync(SceneUtil.MainMenuScene, LoadSceneMode.Single);
+            if (sceneAsync != null)
+            {
+                await sceneAsync;
+                sceneAsync.allowSceneActivation = false;
+            }
+
+            if (sceneAsync != null)
+            {
+                sceneAsync.allowSceneActivation = true;
+                this.SendEvent<SceneEndLoadEvent>();
+            }
         }
 
         protected override void OnInit()

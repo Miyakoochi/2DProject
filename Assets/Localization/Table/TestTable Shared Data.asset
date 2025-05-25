@@ -91,6 +91,18 @@ MonoBehaviour:
     m_Key: UI_Map1
     m_Metadata:
       m_Items: []
+  - m_Id: 1490098582106112
+    m_Key: UI_ReturnGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1490174188630016
+    m_Key: UI_MainMenu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1491193349976064
+    m_Key: UI_GameEnd
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

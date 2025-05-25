@@ -31,6 +31,7 @@ namespace LevelSystem
         /// <returns></returns>
         public UniTask<AsyncOperationHandle<IList<LevelDataModel>>> LoadLevelDataModel();
 
+        public void ClearLevelMap();
     }
     
     public class LevelSystem : AbstractSystem ,ILevelSystem
@@ -87,6 +88,11 @@ namespace LevelSystem
             if (LevelDataModels.TryGetValue(mapId, out var value) == false) return;
 
             mLevelModel.CurrentLevelDataModel = value;
+        }
+
+        public void ClearLevelMap()
+        {
+            mLevelModel.CurrentLevelDataModel = null;
         }
         
         protected override void OnInit()

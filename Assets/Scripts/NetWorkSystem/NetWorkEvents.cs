@@ -36,4 +36,9 @@
     {
         
     }
+
+    public struct StartGameSuccessEvent
+    {
+        
+    }
 }

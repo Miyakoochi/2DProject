@@ -21,7 +21,6 @@ MonoBehaviour:
     m_Address: TestTable_zh
     m_ReadOnly: 1
     m_SerializedLabels:
-    - Locale
     - Locale-zh
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1

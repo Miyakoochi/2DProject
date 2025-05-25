@@ -18,8 +18,8 @@ namespace Audio
 
         private void Start()
         {
-            this.RegisterEvent<PlayBGMEvent>(OnMusicPlay);
-            this.RegisterEvent<EndMusicEvent>(OnEndMusic);
+            this.RegisterEvent<PlayBGMEvent>(OnMusicPlay).UnRegisterWhenDisabled(this);
+            this.RegisterEvent<EndMusicEvent>(OnEndMusic).UnRegisterWhenDisabled(this);
             this.GetModel<IAudioModel>().AudioManager = transform;
         }
 

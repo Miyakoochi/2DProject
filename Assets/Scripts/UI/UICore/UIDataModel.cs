@@ -12,7 +12,10 @@ namespace UI.UICore
         ConnectRoom,
         ChooseNetWorkMode,
         Wating,
-        ChooseLevel
+        ChooseLevel,
+        StopGame,
+        GameEndMenu,
+        GameStopMenu
     }
     
     [CreateAssetMenu(menuName = "DataModel/UIDataModel", fileName = "UIDataModel")]
