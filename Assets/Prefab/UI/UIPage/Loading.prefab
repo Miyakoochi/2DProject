@@ -86,6 +86,8 @@ GameObject:
   - component: {fileID: 7268060685070601324}
   - component: {fileID: 4347955571313714894}
   - component: {fileID: 3581460825464562451}
+  - component: {fileID: 1334353390490506149}
+  - component: {fileID: 5686534358923064645}
   m_Layer: 5
   m_Name: Loading
   m_TagString: Untagged
@@ -151,6 +153,34 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &1334353390490506149
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2227362650588883552}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &5686534358923064645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2227362650588883552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8721286add274135b46d8bc74d176480, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mCanvasGroup: {fileID: 1334353390490506149}
+  mUITweener: []
+  UseTweenToShow: 0
+  UseTweenToHidden: 0
 --- !u!1 &2474630836224276712
 GameObject:
   m_ObjectHideFlags: 0

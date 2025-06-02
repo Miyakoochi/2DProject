@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using Audio;
 using Core.QFrameWork;
 using GameAbilitySystem.Buff;
-using GameAbilitySystem.Buff.Buff;
 using GameAbilitySystem.Buff.Manager;
 using Pathfinding.AStar;
 using QFramework;
@@ -17,17 +16,20 @@ namespace Enemy.EnemyUnit
         public Vector2 Direction;
         private Rigidbody2D Rigidbody2D;
         private BuffState mBuffState;
-        
+        private EnemyAnimator mEnemyAnimator;
 
         public Transform Target;
         private AStar mAStar;
         private List<Node> mRetList;
+
+        public bool BeHurt = false;
         
         private void Awake()
         {
             Rigidbody2D = GetComponent<Rigidbody2D>();
             mAStar =  FindObjectOfType<AStar>();
             mBuffState = GetComponent<BuffState>();
+            mEnemyAnimator = GetComponent<EnemyAnimator>();
             mBuffState.SetHpProperty(50);
         }
 
@@ -54,6 +56,11 @@ namespace Enemy.EnemyUnit
                 return;
             }
 
+            if (BeHurt)
+            {
+                return;
+            }
+            
             var list = mAStar.FindPath(transform.position, Target.position);
             mRetList = list;
             if (list == null)
@@ -86,6 +93,8 @@ namespace Enemy.EnemyUnit
         {
             if(other.tag.Equals("Player")) return;
             this.GetSystem<IAudioSystem>().PlayAudioOnce(EMusicType.EnemyBeHit);
+            Rigidbody2D.velocity = Vector2.zero;
+            BeHurt = true;
         }
         
         private void OnCollisionEnter2D(Collision2D other)

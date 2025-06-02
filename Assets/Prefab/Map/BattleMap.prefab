@@ -8566,6 +8566,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player1StartPositions: {fileID: 8306913365338762724}
   Player2StartPositions: {fileID: 3783801352897408717}
+  BoundCameraLeftDown: {fileID: 0}
+  BoundCameraRightUp: {fileID: 0}
 --- !u!1 &6963216828458865478
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using Core.QFrameWork;
+using GameAbilitySystem.Buff.Apply.Bullet;
 using ObjectPool;
 using QFramework;
 using UnityEngine;
@@ -19,11 +21,10 @@ namespace GameAbilitySystem.Buff.Manager
 
         private void FixedUpdate()
         {
-            int index = 0;
-
-            while (index < mBulletManagerModel.UpdateBulletUnits.Count)
+            var array =  new List<BulletUnit>(this.GetModel<IBulletManagerModel>().UpdateBulletUnits);
+            for (int index = array.Count - 1; index >= 0; index--)
             {
-                var obj = mBulletManagerModel.UpdateBulletUnits[index];
+                var obj = array[index];
                 obj.SelfRigidbody.velocity = obj.MoveDirection * obj.Speed;
                 obj.Duration -= Time.fixedDeltaTime;
 
@@ -31,11 +32,12 @@ namespace GameAbilitySystem.Buff.Manager
                 {
                     mBulletManagerSystem.ReleaseBullet(index);
                 }
-                else
-                {
-                    index++;
-                }
             }
+        }
+
+        private void OnDestroy()
+        {
+            this.GetSystem<IObjectPoolSystem>().ReleaseAll<BulletUnit>();
         }
     }
 }

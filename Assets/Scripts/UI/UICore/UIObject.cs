@@ -1,38 +1,55 @@
-﻿using UnityEngine;
+﻿using Core;
+using ObjectPool;
+using UnityEngine;
 
 namespace UI.UICore
 {
-    public class UIObject
+    public class UIObject : IGameObject, IPoolable<UIDataModel>
     {
-        public GameObject UIGameObject;
-        private CanvasGroup Group;
+        private UIControllerComponent mComponent;
 
         public UIObject(UIDataModel dataModel)
         {
             if (dataModel.UIPrefabs)
             {
-                UIGameObject = GameObject.Instantiate(dataModel.UIPrefabs);
-                Group = UIGameObject.AddComponent<CanvasGroup>();
+                Self = GameObject.Instantiate(dataModel.UIPrefabs);
+                mComponent = Self.GetComponent<UIControllerComponent>();
             }
         }
-        
-        public void SetShow(bool isActive)
+
+        protected UIObject()
         {
-            Group.alpha = isActive == true ? 1 : 0;
-            Group.interactable = isActive;
-            Group.blocksRaycasts = isActive;
-            //UIGameObject?.SetActive(isActive);
+            
         }
 
-        public void SetActivity(bool isActive)
+        public void SetShow(bool isActive)
         {
-            UIGameObject.SetActive(isActive);
+            if (!mComponent) return;
+
+            if (isActive)
+            {
+                mComponent.SetUIShow();
+                return;
+            }
+            
+            mComponent.SetUIHidden();
         }
-        
-        public void SetOnlyInteractable(bool isInteractable)
+
+
+        public GameObject Self { get; set; }
+        public void Set(UIDataModel dataModel)
         {
-            //Group.interactable = isInteractable;
-            //Group.blocksRaycasts = isInteractable;
+            if (dataModel.UIPrefabs)
+            {
+                Self = GameObject.Instantiate(dataModel.UIPrefabs);
+                mComponent = Self.GetComponent<UIControllerComponent>();
+                Self.SetActive(true);
+            }
+        }
+
+        public void Reset()
+        {
+            Self.SetActive(false);
         }
     }
 }

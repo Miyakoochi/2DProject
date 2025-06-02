@@ -251,6 +251,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6744158107441974551}
   - component: {fileID: 6674036967145905080}
+  - component: {fileID: 2642499672066960150}
+  - component: {fileID: 6536189013527805900}
   m_Layer: 5
   m_Name: ConnectRoom
   m_TagString: Untagged
@@ -291,6 +293,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448169408685959424}
   m_CullTransparentMesh: 1
+--- !u!225 &2642499672066960150
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448169408685959424}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &6536189013527805900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448169408685959424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8721286add274135b46d8bc74d176480, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mCanvasGroup: {fileID: 2642499672066960150}
+  mUITweener: []
+  UseTweenToShow: 0
+  UseTweenToHidden: 0
 --- !u!1 &7205358340117508294
 GameObject:
   m_ObjectHideFlags: 0

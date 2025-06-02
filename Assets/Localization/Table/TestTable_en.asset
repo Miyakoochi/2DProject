@@ -106,6 +106,10 @@ MonoBehaviour:
     m_Localized: GameEnd
     m_Metadata:
       m_Items: []
+  - m_Id: 3739504337399808
+    m_Localized: BeginnerTutorial
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

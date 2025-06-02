@@ -56,7 +56,7 @@ namespace NetWorkSystem.Kcp
             {
                 mKcpClint.Send(datagram.AsSpan().Slice(0, bytes));
             }
-            catch (ObjectDisposedException e)
+            catch (ObjectDisposedException)
             {
             }
         }

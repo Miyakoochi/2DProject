@@ -103,6 +103,10 @@ MonoBehaviour:
     m_Key: UI_GameEnd
     m_Metadata:
       m_Items: []
+  - m_Id: 3739504337399808
+    m_Key: UI_BeginnerTutorial
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

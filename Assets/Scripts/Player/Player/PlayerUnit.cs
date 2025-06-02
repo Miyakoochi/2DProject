@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Command;
 using Common;
 using Core;
 using Core.QFrameWork;
@@ -38,8 +39,6 @@ namespace Player.Player
 
         private float AttackAngleValue;
         private bool IsAttack = false;
-        
-        private float OriginalScaleX;
 
         private float MoveAngle;
         private float LastMoveAngle;
@@ -72,8 +71,7 @@ namespace Player.Player
             
             this.GetSystem<IUnitSystem>().AddSkill(PlayerBuff, "Skill_Fire");
             this.GetSystem<IUnitSystem>().AddUnit(PlayerBuff);
-
-            OriginalScaleX = Owner.transform.localScale.x;
+            
         }
         
         public PlayerUnit(PlayerDataModel playerModel)
@@ -108,7 +106,6 @@ namespace Player.Player
             
             this.GetSystem<IUnitSystem>().AddSkill(PlayerBuff, "Skill_Fire");
             this.GetSystem<IUnitSystem>().AddUnit(PlayerBuff);
-            OriginalScaleX = Owner.transform.localScale.x;
             
             Owner.layer = LayerMask.NameToLayer("Player");
         }
@@ -142,33 +139,10 @@ namespace Player.Player
         public async void OnUnitFire()
         {
             IsAttack = true;
-            this.GetSystem<IUnitSystem>().CastSkill(PlayerBuff, "Skill_Fire");
-            
-            //发射子弹
-            // 获取鼠标在屏幕上的位置
-            Vector3 mousePos = Input.mousePosition;
-
-            // 将鼠标在屏幕上的位置转换为世界空间中的位置
-            if (!Camera.main) return;
-            
-            Vector3 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, -Camera.main.transform.position.z));
-
-            // 计算物体需要朝向的方向
-            Vector3 direction = (worldPos - Owner.transform.position).normalized;
-            AttackAngleValue = Vector2.SignedAngle(Vector2.right, direction);
-            if (AttackAngleValue > 135 || AttackAngleValue < -135)
+            var attack = this.GetSystem<IUnitSystem>().CastSkill(PlayerBuff, "Skill_Fire");
+            if (attack)
             {
-                var scale = Owner.transform.localScale;
-                scale.x = -OriginalScaleX;
-                Owner.transform.localScale = scale;
-            }
-            await UniTask.WaitForSeconds(0.5f);
-            IsAttack = false;
-            if (Owner)
-            {
-                var localScale = Owner.transform.localScale;
-                localScale.x = OriginalScaleX;
-                Owner.transform.localScale = localScale;
+                this.SendCommand<FireCameraShake>();
             }
         }
 
@@ -190,17 +164,13 @@ namespace Player.Player
             LastMoveDirection = direction;
             MoveAngle = Vector2.SignedAngle(Vector2.right, Direction);
             LastMoveAngle = Vector2.SignedAngle(Vector2.right, LastMoveDirection);
-            if (MoveAngle > 135 || MoveAngle < -135)
+            if (MoveAngle >= 135 || MoveAngle <= -135)
             {
-                var scale = Owner.transform.localScale;
-                scale.x = -OriginalScaleX;
-                Owner.transform.localScale = scale;
+                SpriteRenderer.flipX = true;
             }
             else
             {
-                var scale = Owner.transform.localScale;
-                scale.x = OriginalScaleX;
-                Owner.transform.localScale = scale;
+                SpriteRenderer.flipX = false;
             }
         }
 
@@ -209,15 +179,11 @@ namespace Player.Player
             Direction = Vector2.zero;
             if (LastMoveAngle > 135 || LastMoveAngle < -135)
             {
-                var scale = Owner.transform.localScale;
-                scale.x = -OriginalScaleX;
-                Owner.transform.localScale = scale;
+                SpriteRenderer.flipX = true;
             }
             else
             {
-                var scale = Owner.transform.localScale;
-                scale.x = OriginalScaleX;
-                Owner.transform.localScale = scale;
+                SpriteRenderer.flipX = false;
             }
         }
 

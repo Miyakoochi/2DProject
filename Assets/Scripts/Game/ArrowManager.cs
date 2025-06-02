@@ -1,7 +1,8 @@
 ﻿using Core.QFrameWork;
-using ObjectPool;
+using InputSystem;
+using QFramework;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.InputSystem;
 
 namespace Game
 {
@@ -12,18 +13,16 @@ namespace Game
         private void Start()
         {
             DontDestroyOnLoad(gameObject);
+            this.GetSystem<IInputControllerSystem>().BindMousePosition(OnMousePosition);
+            Cursor.visible = false;
         }
- 
-        private void FixedUpdate()
+
+        private void OnMousePosition(InputAction.CallbackContext callbackContext)
         {
-            // 将鼠标屏幕坐标转换为世界坐标
-            if (Camera.main && CursorTexture)
-            {
-                Cursor.visible = false;
-                Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                mousePos.z = 0; // 确保 Z 轴为 0（2D 场景）
-                CursorTexture.transform.position = mousePos;
-            }
+            if(!CursorTexture) return;
+            
+            var position = callbackContext.ReadValue<Vector2>();
+            CursorTexture.transform.position = position;
         }
     }
 }

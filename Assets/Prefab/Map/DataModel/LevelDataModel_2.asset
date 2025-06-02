@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: LevelDataModel_2
   m_EditorClassIdentifier: 
   MapId: 1002
-  MapPrefab: {fileID: 2779430164229778059, guid: e0f827e116f374d40bb10e4b891ba298, type: 3}
-  MapStartPosition: []
+  MapPrefab: {fileID: 2449197091738394586, guid: 42f20ec57d5463a4a91121b844dd8c39, type: 3}
   MapInfo:
     MapImage: {fileID: 0}

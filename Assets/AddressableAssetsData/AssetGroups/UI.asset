@@ -29,6 +29,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - UIDataModel
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4e36d1bac63a6fd4785003291080794d
+    m_Address: Assets/Prefab/UI/UIDataModel/UIDataModel.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UIDataModel
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6288c405f845025498fcdebe8fe5492c
     m_Address: Assets/Prefab/UI/UIDataModel/ChooseNetWorkMode.asset
     m_ReadOnly: 0
@@ -43,6 +49,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6e47cd0c86aa39c4abde6d54e459f6c3
     m_Address: Assets/Prefab/UI/UIDataModel/ConnectRoom.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UIDataModel
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7af5046fe8d430540ad0e9b8f2bc5cb2
+    m_Address: Assets/Prefab/UI/UIDataModel/Damage.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - UIDataModel

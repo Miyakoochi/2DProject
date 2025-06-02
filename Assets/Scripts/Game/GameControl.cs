@@ -106,7 +106,7 @@ namespace Core
             {            
                 await UniTask.WaitForSeconds(1);
                 this.GetSystem<IUISystem>().SetUIShow(UIType.Loading, false);
-                this.GetSystem<IUISystem>().SetUIShow(UIType.MainMenu, true);
+
                 
                 SendChangeEvent("MainMenuState");
             }
@@ -150,6 +150,9 @@ namespace Core
                 base.OnEnterState();
                 
                 this.RegisterEvent<SceneEndLoadEvent>(OnSceneSwitch);
+                
+                this.GetSystem<IUISystem>().SetUIShow(UIType.MainMenu, true);
+                
                 //TODO 注册网络事件
                 this.RegisterEvent<ClientConnectSuccessEvent>(OnClientConnectSuccess);
                 this.RegisterEvent<StartGameSuccessEvent>(OnStartGame);
@@ -205,6 +208,7 @@ namespace Core
 
                 this.GetSystem<IAudioSystem>().PlayBGM(EMusicType.Game);
                 this.GetSystem<IUISystem>().SetUIShow(UIType.StopGame, true);
+                this.GetSystem<IUISystem>().SetUIShow(UIType.BeginnerTutorial, true);
                 //通过资产或者DataModel创建一个规则类，这个规则类可以有一个委托，注册回调函数。游戏流程在收到特定事件后
                 //一个统计类注册角色击杀等事件从而修改自己统计的数字。并且也可以发送事件给游戏规则类（游戏规则类可以仅仅注册事件）。
                 this.GetModel<IPlayerModel>().KillCount.Register(OnPlayerKillUnit);
@@ -231,6 +235,7 @@ namespace Core
                 {
                     await UniTask.WaitForSeconds(1.0f);
 
+                    Time.timeScale = 0.0f;
                     //显示游戏结束UI,后续点击返回主界面可以发送事件告诉当前关卡退出，卸载资源等这里就先不做了。
                     this.GetSystem<IUISystem>().SetUIShow(UIType.StopGame, false);
                     this.GetSystem<IUISystem>().SetUIShow(UIType.GameEndMenu, true);

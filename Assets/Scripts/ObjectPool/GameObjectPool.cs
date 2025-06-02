@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using Core.QFrameWork;
 
 namespace ObjectPool
 {
 
-    public class GameObjectPool : MonoBehaviour
+    public class GameObjectPool : BaseController
     {
         public GameObject Prefab;
         public int InitialSize = 10; 
-        public Transform Parent;
+        public Transform Parent = null;
         private Stack<GameObject> ObjectPool = new Stack<GameObject>();
         private void Awake()
         {

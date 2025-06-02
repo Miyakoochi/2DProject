@@ -237,6 +237,7 @@ MonoBehaviour:
   Speed: 3
   Direction: {x: 0, y: 0}
   Target: {fileID: 0}
+  BeHurt: 0
 --- !u!114 &3342334492662974571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,6 +418,10 @@ PrefabInstance:
     - target: {fileID: 2850243622463414252, guid: 544da82d68ae9c84a9d04e438b55c005, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5485067471986910082, guid: 544da82d68ae9c84a9d04e438b55c005, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1798462575
       objectReference: {fileID: 0}
     - target: {fileID: 5915375982198895025, guid: 544da82d68ae9c84a9d04e438b55c005, type: 3}
       propertyPath: m_PresetInfoIsWorld

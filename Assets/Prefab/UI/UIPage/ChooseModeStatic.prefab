@@ -10,6 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4682839802092017219}
   - component: {fileID: 267402769337961064}
+  - component: {fileID: 1961668204786003968}
+  - component: {fileID: 2878266869922059967}
+  - component: {fileID: 3983050175972302548}
   m_Layer: 5
   m_Name: ChooseModeStatic
   m_TagString: Untagged
@@ -35,7 +38,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 40}
   m_SizeDelta: {x: 400, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &267402769337961064
@@ -46,6 +49,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3571824296903741608}
   m_CullTransparentMesh: 1
+--- !u!225 &1961668204786003968
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3571824296903741608}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &2878266869922059967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3571824296903741608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8721286add274135b46d8bc74d176480, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mCanvasGroup: {fileID: 1961668204786003968}
+  mUITweener:
+  - {fileID: 3983050175972302548}
+  UseTweenToShow: 1
+  UseTweenToHidden: 1
+--- !u!114 &3983050175972302548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3571824296903741608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff9b001d74c406aa193a77a975aa2a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartPosition: {x: 0, y: 40, z: 0}
+  CenterPosition: {x: 0, y: 0, z: 0}
+  ExitPosition: {x: 0, y: 40, z: 0}
+  MoveDuration: 0.5
+  AlphaDuration: 0.5
 --- !u!1 &5683988863735609741
 GameObject:
   m_ObjectHideFlags: 0

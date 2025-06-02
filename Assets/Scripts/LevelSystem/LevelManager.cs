@@ -14,6 +14,8 @@ namespace LevelSystem
         private IAddressableModel mAddressableModel;
         private IPlayerModel mPlayerModel;
         private IPlayerSystem mPlayerSystem;
+
+        public bool IsBoundCamera;
         
         private void Awake()
         {
@@ -28,6 +30,14 @@ namespace LevelSystem
             this.GetSystem<IUISystem>().FadeOut();
             mLevelModel.CurrentLevelMap = Instantiate(mLevelModel.CurrentLevelDataModel.MapPrefab);
             var map = mLevelModel.CurrentLevelMap.GetComponent<LevelMapController>();
+
+            mLevelModel.BoundCamera = IsBoundCamera;
+            if (IsBoundCamera)
+            {
+                mLevelModel.LevelBoundLeftDown = map.BoundCameraLeftDown.position;
+                mLevelModel.LevelBoundRightUp = map.BoundCameraRightUp.position;
+            }
+            
             var player = mPlayerSystem.CreateSelfPlayerById(0);
             player.SetPlayerUnitPosition(map.Player1StartPositions.position);
 

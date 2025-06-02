@@ -6,7 +6,7 @@ using UI.UICore;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI
+namespace UI.GameEndMenu
 {
     public class GameEndMenuUI : BaseController
     {

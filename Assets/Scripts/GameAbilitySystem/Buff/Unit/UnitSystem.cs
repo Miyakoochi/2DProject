@@ -19,7 +19,7 @@ namespace GameAbilitySystem.Buff.Unit
         public void CalculateBuffProperty(IGameAbilityUnit unitEntity);
         public void AddSkill(IGameAbilityUnit unitEntity, string skillId);
 
-        public void CastSkill(IGameAbilityUnit unitEntity, string skillId);
+        public bool CastSkill(IGameAbilityUnit unitEntity, string skillId);
         //public void CastSkill(int unitEntityId, string skillId);
 
         public void AddUnit(IGameAbilityUnit unitEntity);
@@ -170,18 +170,18 @@ namespace GameAbilitySystem.Buff.Unit
         /// </summary>
         /// <param name="unitEntity"></param>
         /// <param name="skillId"></param>
-        public void CastSkill(IGameAbilityUnit unitEntity, string skillId)
+        public bool CastSkill(IGameAbilityUnit unitEntity, string skillId)
         {
             //TODO 判断是否能够使用技能 如果成功则触发技能的时间轴 实际技能的冷却时间设置
             if (TryGetSkill(unitEntity, skillId, out var skill) == false)
             {
-                return;
+                return false;
             }
             
             //如果在冷却
             if (skill.BuiltInCooldown > 0)
             {
-                return;
+                return false;
             }
 
             //如果施法资源足够
@@ -212,6 +212,7 @@ namespace GameAbilitySystem.Buff.Unit
             
             //无论是否成功都设定一个内置CD 避免连续多次释放
             skill.BuiltInCooldown = 0.5;
+            return true;
         }
         
         public void AddUnit(IGameAbilityUnit unitEntity)

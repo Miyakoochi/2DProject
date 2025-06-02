@@ -186,6 +186,8 @@ GameObject:
   - component: {fileID: 5145478040453990439}
   - component: {fileID: 2921706104918432921}
   - component: {fileID: 8579228691969209376}
+  - component: {fileID: 7152689607966326037}
+  - component: {fileID: -7139812450661320134}
   m_Layer: 5
   m_Name: Waiting
   m_TagString: Untagged
@@ -236,6 +238,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Delete: {fileID: 399815975177821091}
+--- !u!225 &7152689607966326037
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2244191560032245663}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &-7139812450661320134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2244191560032245663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8721286add274135b46d8bc74d176480, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mCanvasGroup: {fileID: 7152689607966326037}
+  mUITweener: []
+  UseTweenToShow: 0
+  UseTweenToHidden: 0
 --- !u!1 &3708576977621045539
 GameObject:
   m_ObjectHideFlags: 0

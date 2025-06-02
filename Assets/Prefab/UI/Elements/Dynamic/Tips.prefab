@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 4978899052618724019}
   - component: {fileID: 8810146757415469875}
   - component: {fileID: 4730904324309520973}
+  - component: {fileID: -6247236149432281446}
+  - component: {fileID: 1297909681914490141}
   m_Layer: 5
   m_Name: Tips
   m_TagString: Untagged
@@ -132,59 +134,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbc9ce6fef594939a77c8c11819604fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enterCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  exitCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  moveDuration: 1.2
-  stayDuration: 2
-  startPos: {x: 238.2813, y: -75}
-  centerPos: {x: 0, y: -75}
-  endPos: {x: 238.2813, y: -75}
+  mCanvasGroup: {fileID: -6247236149432281446}
+  mUITweener:
+  - {fileID: 1297909681914490141}
+  mChildrenUIController: []
+  UseTweenToShow: 1
+  UseTweenToHidden: 1
   TextMesh: {fileID: 1063376942422366876}
 --- !u!223 &4730904324309520973
 Canvas:
@@ -209,6 +164,35 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 100
   m_TargetDisplay: 0
+--- !u!225 &-6247236149432281446
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705973580623839154}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &1297909681914490141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705973580623839154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb0a5d887f14ee9b53ff17e9370349d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rectTransform: {fileID: 8661899502059835247}
+  StartPosition: {x: 238.2813, y: -75, z: 0}
+  CenterPosition: {x: 0, y: -75, z: 0}
+  ExitPosition: {x: 238.2813, y: -75, z: 0}
+  MoveDuration: 0.5
 --- !u!1 &4024446925604843215
 GameObject:
   m_ObjectHideFlags: 0

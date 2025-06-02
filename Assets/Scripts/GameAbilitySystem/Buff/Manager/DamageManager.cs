@@ -2,13 +2,18 @@
 using Core.QFrameWork;
 using CsLua;
 using GameAbilitySystem.Buff.Buff;
+using GameAbilitySystem.Buff.DamageValue;
 using GameAbilitySystem.Buff.Unit;
 using QFramework;
+using UI.UICore;
+using UnityEngine;
 
 namespace GameAbilitySystem.Buff.Manager
 {
     public class DamageManager : BaseController
     {
+        public DamageParticle DamageParticle;
+        
         private IDamageModel mDamageModel;
         private IUnitSystem mUnitSystem;
         private ILuaSystem mLuaSystem;
@@ -129,7 +134,11 @@ namespace GameAbilitySystem.Buff.Manager
 
                 //按游戏设计的规则跳数字，如果要有暴击，也可以丢在策划脚本函数（lua可以返回多参数）也可以随便怎么滴
                 //system直接创建（利用对象池）UI管理
-                //SceneVariants.PopUpNumberOnCharacter(dInfo.defender, Mathf.Abs(dVal), isHeal);
+                //this.SendCommand(new CreateDamageCommand(defenderUnit.Owner.transform, Mathf.Abs(damageValue)));
+                if (DamageParticle)
+                {
+                    DamageParticle.EmitDamage(defenderUnit.Owner.transform.position, Mathf.Abs(damageValue));
+                }
             }
 
             //伤害流程走完之后 添加伤害信息附加的Buff

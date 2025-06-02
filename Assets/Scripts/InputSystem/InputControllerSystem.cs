@@ -1,4 +1,5 @@
-﻿using QFramework;
+﻿using System;
+using QFramework;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,7 @@ namespace InputSystem
     {
         public void BindControllerToUnit(ICanController unit);
         public void UnBindController();
+        public void BindMousePosition(Action<InputAction.CallbackContext> OnMousePosition);
     }
     
     public class InputControllerSystem : AbstractSystem, IInputControllerSystem
@@ -51,6 +53,15 @@ namespace InputSystem
         public void UnBindController()
         {
             mUnit = null;
+        }
+
+        public void BindMousePosition(Action<InputAction.CallbackContext> OnMousePosition)
+        {
+            mInputActions.FindAction("Mouse").performed += OnMousePosition;
+        }
+
+        public void UnBindMousePosition()
+        {
         }
     }
 }

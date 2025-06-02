@@ -1,12 +1,11 @@
 ﻿using Audio;
 using Core.QFrameWork;
 using QFramework;
-using SceneSystem;
 using UI.UICore;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.MainMenu
+namespace UI
 {
     public class MainMenuOcc : BaseController
     {
@@ -23,10 +22,9 @@ namespace UI.MainMenu
 
         private void OnCrateRoomClick()
         {
-            //this.GetSystem<IUISystem>().ShowTips("Tips_FunctionError");
-            this.GetSystem<IAudioSystem>().PlayAudioOnce(EMusicType.Click);
-            this.GetSystem<IUISystem>().SetUIShow(UIType.ChooseNetWorkMode, true);
-            this.GetSystem<IUISystem>().SetUIOnlyInteractable(UIType.MainMenu, false);
+            this.GetSystem<IUISystem>().ShowTips("Tips_FunctionError");
+            //this.GetSystem<IAudioSystem>().PlayAudioOnce(EMusicType.Click);
+            //this.GetSystem<IUISystem>().SetUIShow(UIType.ChooseNetWorkMode, true);
         }
 
         private void OnQuitGameClick()
@@ -44,7 +42,7 @@ namespace UI.MainMenu
         {
             this.GetSystem<IAudioSystem>().PlayAudioOnce(EMusicType.Click);
             this.GetSystem<IUISystem>().SetUIShow(UIType.ChooseLevel, true);
-            this.GetSystem<IUISystem>().SetUIShow(UIType.MainMenu, false);
+            //this.GetSystem<IUISystem>().SetUIShow(UIType.MainMenu, false);
         }
     }
 }

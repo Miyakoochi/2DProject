@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using AssetSystem;
 using Common;
 using Cysharp.Threading.Tasks;
 using QFramework;
-using Unity.VisualScripting;
-using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.ResourceManagement.AsyncOperations;
-using XLuaTest;
 
 namespace UI.UICore
 {
@@ -24,13 +20,6 @@ namespace UI.UICore
         public void SetUIShow(UIType type, bool isShow);
 
         public void SetAllUIHide();
-
-        /// <summary>
-        /// 设置UI是否接收交互
-        /// </summary>
-        /// <param name="type"></param>
-        /// <param name="isInteractable"></param>
-        public void SetUIOnlyInteractable(UIType type, bool isInteractable);
         
         /// <summary>
         /// 加载本地所有的UI资源
@@ -45,13 +34,6 @@ namespace UI.UICore
         /// </summary>
         /// <param name="tipsKey"></param>
         public void ShowTips(string tipsKey);
-
-        /// <summary>
-        /// 设置 UI 激活状态
-        /// </summary>
-        /// <param name="type"></param>
-        /// <param name="isActivity"></param>
-        public void SetUIActivity(UIType type, bool isActivity);
 
         public void FadeOut();
         public void FadeIn();
@@ -112,35 +94,10 @@ namespace UI.UICore
                 
                 var uiObject = new UIObject(model);
                 mUIObjects.TryAdd(model.type, uiObject);
-                uiObject.UIGameObject?.transform.SetParent(mUIModel.StaticUIs ,false);
+                uiObject.Self?.transform.SetParent(mUIModel.StaticUIs ,false);
                 uiObject.SetShow(isShow);
             }
             
-        }
-
-        public void SetUIActivity(UIType type, bool isActivity)
-        {
-            if (mDataModels.Count <= 0)
-            {
-                //await LoadLocalAllUIAsset();
-                return;
-            }
-            
-            if(mOperationHandles.Status != AsyncOperationStatus.Succeeded) return;
-            
-            if (mUIObjects.TryGetValue(type, out var value))
-            {
-                value.SetActivity(isActivity);
-            }
-            else
-            {
-                if(mDataModels.TryGetValue(type, out var model) == false) return;
-                
-                var uiObject = new UIObject(model);
-                mUIObjects.TryAdd(model.type, uiObject);
-                uiObject.UIGameObject?.transform.SetParent(mUIModel.StaticUIs ,false);
-                uiObject.SetActivity(isActivity);
-            }
         }
 
         public void FadeOut()
@@ -160,21 +117,6 @@ namespace UI.UICore
                 kvp.Value.SetShow(false);
             }
         }
-
-        public void SetUIOnlyInteractable(UIType type, bool isInteractable)
-        {
-            if (mDataModels.Count <= 0)
-            {
-                return;
-            }
-            
-            if(mOperationHandles.Status != AsyncOperationStatus.Succeeded) return;
-            
-            if (mUIObjects.TryGetValue(type, out var value))
-            {
-                value.SetOnlyInteractable(isInteractable);
-            }
-        }
         
         public void ShowTips(string tipsKey)
         {
@@ -186,7 +128,6 @@ namespace UI.UICore
 
             SetUIShow(UIType.Tips, true);
         }
-        
         
         protected override void OnInit()
         {

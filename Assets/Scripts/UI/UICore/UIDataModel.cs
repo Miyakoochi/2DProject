@@ -15,7 +15,9 @@ namespace UI.UICore
         ChooseLevel,
         StopGame,
         GameEndMenu,
-        GameStopMenu
+        GameStopMenu,
+        Damage,
+        BeginnerTutorial
     }
     
     [CreateAssetMenu(menuName = "DataModel/UIDataModel", fileName = "UIDataModel")]

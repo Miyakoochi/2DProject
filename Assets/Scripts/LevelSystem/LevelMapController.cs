@@ -8,5 +8,8 @@ namespace LevelSystem
     {
         public Transform Player1StartPositions;
         public Transform Player2StartPositions;
+
+        public Transform BoundCameraLeftDown;
+        public Transform BoundCameraRightUp;
     }
 }

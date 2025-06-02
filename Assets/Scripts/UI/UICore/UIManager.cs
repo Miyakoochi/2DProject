@@ -5,9 +5,10 @@ using UnityEngine.Serialization;
 
 namespace UI.UICore
 {
-    public class UIController : BaseController
+    public class UIManager : BaseController
     {
         public Transform UICanvas;
+        public Transform DamageCanvas;
 
         private void Awake()
         {
@@ -17,11 +18,8 @@ namespace UI.UICore
 
         private void OnInitUIEvent(InitUIEvent @event)
         {
-            //if(!StaticUIs) Debug.Log("StaticUIs is null");
-            //if(!DynamicUIs) Debug.Log("DynamicUIs is null");
-            //if(!OccasionallyUIs) Debug.Log("OccasionallyUIs is null");
-            
             this.GetModel<IUIModel>().StaticUIs = UICanvas;
+            this.GetModel<IUIModel>().DamageUIs = DamageCanvas;
             
             this.GetSystem<IUISystem>().LoadLocalAllUIAsset();
         }

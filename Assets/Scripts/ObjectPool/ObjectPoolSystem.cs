@@ -11,6 +11,7 @@ namespace ObjectPool
         public void CreatePool<T>(int minSize, int maxSize = 100) where T : IGameObject, new();
         public T GetObject<T>() where T : IGameObject, new();
         public void ReleaseObject<T>(T value) where T : IGameObject, new();
+        public void ReleaseAll<T>();
     }
     
     public class ObjectPoolSystem : AbstractSystem, IObjectPoolSystem
@@ -47,14 +48,14 @@ namespace ObjectPool
                 }
 
                 gameObject = (T)stack.Pop();
-                gameObject.Self.SetActive(true);
+                gameObject.Self?.SetActive(true);
                 return gameObject;
             }
             
             CreatePool<T>(10);
 
             gameObject = new T();
-            gameObject.Self.SetActive(true);
+            gameObject.Self?.SetActive(true);
             return gameObject;
         }
 
@@ -67,13 +68,17 @@ namespace ObjectPool
                 stack.Push(value);
             }
             
-            value.Self.SetActive(false);
-            
-            /*CreatePool<T>(10);
-            if (mObjectPools.TryGetValue(type, out var stack2))
+            value.Self?.SetActive(false);
+        }
+
+        public void ReleaseAll<T>()
+        {
+            var type = typeof(T);
+
+            if (mObjectPools.TryGetValue(type, out var stack))
             {
-                stack2.Push(value);
-            }*/
+                stack.Clear();
+            }
         }
         
         protected override void OnInit()

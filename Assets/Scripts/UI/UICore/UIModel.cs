@@ -5,7 +5,8 @@ namespace UI.UICore
 {
     public interface IUIModel : IModel
     {
-        public Transform StaticUIs { get; set; }
+        public Transform StaticUIs { get; set; } 
+        public Transform DamageUIs { get; set; } 
     }
     
     public class UIModel : AbstractModel, IUIModel
@@ -17,5 +18,6 @@ namespace UI.UICore
         }
 
         public Transform StaticUIs { get; set; }
+        public Transform DamageUIs { get; set; }
     }
 }
